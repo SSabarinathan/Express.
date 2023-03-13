@@ -1,39 +1,28 @@
-import express from 'express';
-
-const router= express();
-
-const items = ('./router/products')
-
+import express from "express";
+import { json } from "express";
+import { nameRouter } from "./router/names.js";
+import { itemsRouter } from "./router/items.js";
 
 
-router.get('/',(req, res)=>{
-  res.send('You are in Home page!!')
+const app = express();
+app.use(json());
+
+app.get("/", (req, res) => {
+  res.send("You are in Sabarinathan Home page!!");
 });
-router.use('/items', items)
 
-router.listen(3000)
-
-
+app.use("/user", nameRouter);
+app.use("/items", itemsRouter);
 
 
+app.get("*", (req, res) => {
+  res.send("No Page found , Please try again later.");
+});
 
-
-
-
-
-
-
+app.listen(3000, () => {
+  console.log("Server started at port 3000");
+});
 
 
 
-
-//
-
-
-
-
-
-
-
-
-
+//nodemon

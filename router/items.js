@@ -1,12 +1,20 @@
 import express from 'express';
 
-const router = express();
+export const itemsRouter = express.Router();
 
-router.get('/items',(req, res)=>{
-  res.send('You are in item page!!')
+
+
+itemsRouter.get('/',(req, res)=>{
+  res.send('Hello items page!!')
 });
 
-router.listen(3000)
+itemsRouter.get('/item',(req, res)=>{
+  res.send('You are in items page!!')
+});
+
+itemsRouter.get ('/particularItem', (req, res)=>{
+  res.send('Your particular page is loading !!')
+})
 
 
 
