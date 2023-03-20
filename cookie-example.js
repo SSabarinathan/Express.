@@ -1,7 +1,6 @@
 
 import express from 'express';
-import cookie from 'cookie-parser';
-import Cookie from 'js-cookie'
+
 
 // app.use(json());
 const app= express();

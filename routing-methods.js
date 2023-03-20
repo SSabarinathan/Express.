@@ -6,7 +6,7 @@ const logger= function(req, res, next){
   console.log('Middleware');
   next();
 }
-let app = express();
+let app = express();//express() function is a top-level function exported by the express module.
 app.use(json());
 app.use(logger);
 // app.use(express.json())
