@@ -7,7 +7,14 @@ user.get('/',(req, res)=>{
   console.log(user.mountpath);
 })
 
-app.use('/user', user)
+user.get('/inneruser/into',(req, res)=>{
+  res.send('Mountpath "Subpath " --- User Innerpage!')
+  console.log(user.mountpath);
+})
+// http://localhost:3333/user/inneruser/into
+
+
+app.use('/user', user)//it is the mount used
 
 app.listen(3333)
 

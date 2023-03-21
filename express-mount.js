@@ -1,25 +1,29 @@
-import express from 'express';
+import express from "express";
 const app = express();
-const child= express();
+const child = express();
 const parent = express();
+const subApp = express();
 
-child.on('mount', (req, res )=>{
-  console.log('Child mount');
-  // res.send('CHild')
+subApp.get("/", (req, res) => {
+  res.send("sub app");
+  console.log("It is the sub app");
+});
 
-})
+app.use("/sub", subApp);
 
-parent.on('mount',(req, res)=>{
-  console.log('Parent mount');
-    // res.send('Parent')
+child.on("mount", () => {
+  console.log("Child mount");
+  console.log(child.mountpath);
+});
 
-})
+parent.on("mount", () => {
+  console.log("Parent mount");
+  console.log(parent.mountpath);
+});
 
-app.use('/child', child);
-app.use('/parent', parent);
+app.use("/child", child);
+app.use("/parent", parent);
 
-
-app.listen(2222)
-
+app.listen(3000);
 
 //
