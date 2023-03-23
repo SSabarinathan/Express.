@@ -8,7 +8,8 @@ const app= express();
 app.get('/set-cookie',(req, res)=>{
   res.cookie('myCookie', 'My1st-Cookie-in-Express!!');
   console.log('url is',req.url);
-  console.log(req.hostname);
+  console.log(req.cookies);
+  // console.log(req.hostname);
   // console.log(req);
   res.send('Cookie set!!');
 

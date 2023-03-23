@@ -1,11 +1,11 @@
 import express from 'express';
 const app= express();
 
+app.set('title', 'This is my express app!')
 
-
-app.get('/app',(req, res)=>{
-  console.log(req);
-  res.send('app')
+app.get('/',(req, res)=>{
+  const title= req.app.get('title');
+  res.send(title)
 })
 
 app.listen(3000,()=>{
